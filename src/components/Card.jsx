@@ -1,10 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Card({ format }) {
   const [formattedString, setFormattedString] = useState("76");
   const [enteredString, setEnteredString] = useState("Poki");
   const handleChange = (e) => {
     setEnteredString(e.target.value);
+  };
+
+  const resultRef = useRef();
+
+  const copyText = () => {
+    //copy
+    window.navigator.clipboard.writeText(formattedString);
+    //select style
+    const range = document.createRange();
+    range.selectNodeContents(resultRef.current);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
   };
 
   useEffect(() => {
@@ -26,15 +39,15 @@ function Card({ format }) {
             onChange={handleChange}
             defaultValue={enteredString}
           />
-          {formattedString}
+          <div ref={resultRef}>{formattedString}</div>
 
           <div className="flex justify-center">
-            <a
-              href="#"
-              className="items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            <button
+              className="bg-green-800 text-white text-xl px-4 py-2 rounded-xl"
+              onClick={copyText}
             >
-              Copy
-            </a>
+              copy
+            </button>
           </div>
         </div>
       </div>
