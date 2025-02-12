@@ -26,28 +26,30 @@ function Card({ format }) {
 
   return (
     <>
-      <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-        <div className="flex flex-col gap-5">
-          <div href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Paste News Here
-            </h5>
-          </div>
+      <div className="flex justify-center">
+        <div className="max-w-sm w-6xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+          <div className="flex flex-col gap-5">
+            <div href="#">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Paste News Here
+              </h5>
+            </div>
 
-          <input
-            className="bg-gray-700 rounded-2xl"
-            onChange={handleChange}
-            defaultValue={enteredString}
-          />
-          <div ref={resultRef}>{formattedString}</div>
+            <input
+              className="bg-gray-700 rounded-2xl"
+              onChange={handleChange}
+              defaultValue={enteredString}
+            />
+            <div ref={resultRef}>{formattedString}</div>
 
-          <div className="flex justify-center">
-            <button
-              className="bg-green-800 text-white text-xl px-4 py-2 rounded-xl"
-              onClick={copyText}
-            >
-              copy
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="bg-green-800 text-white text-xl px-4 py-2 rounded-xl"
+                onClick={copyText}
+              >
+                copy
+              </button>
+            </div>
           </div>
         </div>
       </div>
