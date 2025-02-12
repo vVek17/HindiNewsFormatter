@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from "react";
+import Button from "./Button";
 
 function Card({ format }) {
   const [formattedString, setFormattedString] = useState("76");
-  const [enteredString, setEnteredString] = useState("Poki");
+  const [enteredString, setEnteredString] = useState("");
   const handleChange = (e) => {
     setEnteredString(e.target.value);
   };
 
   const resultRef = useRef();
+
+  const handleButtonClick = (e) => {
+    copyText();
+  };
 
   const copyText = () => {
     //copy
@@ -27,7 +32,10 @@ function Card({ format }) {
   return (
     <>
       <div className="flex justify-center">
-        <div className="max-w-sm w-6xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <div
+          className="max-w-sm w-6xl p-6 bg-white border border-gray-200 rounded-lg shadow-sm
+         dark:bg-gray-800 dark:border-gray-700"
+        >
           <div className="flex flex-col gap-5">
             <div href="#">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -36,19 +44,16 @@ function Card({ format }) {
             </div>
 
             <input
-              className="bg-gray-700 rounded-2xl"
+              className="bg-gray-700 rounded-2xl p-3"
               onChange={handleChange}
               defaultValue={enteredString}
+              placeholder="paste here..."
+              autoFocus
             />
             <div ref={resultRef}>{formattedString}</div>
 
             <div className="flex justify-center">
-              <button
-                className="bg-green-800 text-white text-xl px-4 py-2 rounded-xl"
-                onClick={copyText}
-              >
-                copy
-              </button>
+              <Button onClick={handleButtonClick}>copy</Button>
             </div>
           </div>
         </div>
