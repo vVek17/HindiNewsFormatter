@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 
 function Card({ format }) {
-  const [formattedString, setFormattedString] = useState("76");
+  const [formattedString, setFormattedString] = useState("");
   const [enteredString, setEnteredString] = useState("");
   const handleChange = (e) => {
     setEnteredString(e.target.value);

@@ -1,8 +1,5 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Card from "./components/Card";
 import CardPage from "./pages/CardPage";
 
 function App() {
@@ -14,7 +11,8 @@ function App() {
       return !/^[A-Za-z]$/.test(word.charAt(0));
     });
 
-    return result.join(" ");
+    const doubleQuoteAdded = '"' + result.join(" ") + '"';
+    return doubleQuoteAdded;
   };
 
   return (
